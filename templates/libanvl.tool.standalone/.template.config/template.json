@@ -7,7 +7,7 @@
   "groupIdentity": "libanvl.tool",
   "shortName": "libanvltoolapp",
   "sourceName": "libanvl.tool",
-  "preferNameDirectory": true,
+  "preferNameDirectory": false,
   "tags": {
     "language": "C#",
     "type": "project"
@@ -44,14 +44,27 @@
       "datatype": "bool",
       "description": "Skip dotnet restore after creation",
       "defaultValue": "false"
+    },
+    "skipSln": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Skip adding projects to sln",
+      "defaultValue": "false"
     }
   },
   "postActions": [
     {
       "condition": "(!skipRestore)",
       "description": "Restore NuGet packages required by this project.",
-      "manualInstructions": [{ "text": "Run 'dotnet restore'" }],
+      "manualInstructions": [ { "text": "Run 'dotnet restore'" } ],
       "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    },
+    {
+      "condition": "(!skipSln)",
+      "description": "Add projects to solution",
+      "manualInstructions": [ { "text": "Add generated project to solution manually." } ],
+      "actionId": "D396686C-DE0E-4DE6-906D-291CD29FC5DE",
       "continueOnError": true
     }
   ]
