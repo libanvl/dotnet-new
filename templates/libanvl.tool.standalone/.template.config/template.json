@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "identity": "libanvl.tool.standalone",
+  "author": "Charles Willis",
+  "classifications": [ "libanvl", "tool" ],
+  "name": "libanvl Standalone dotnet tool",
+  "groupIdentity": "libanvl.tool",
+  "shortName": "libanvltoolapp",
+  "sourceName": "libanvl.tool",
+  "preferNameDirectory": true,
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "primaryOutputs": [
+    {
+      "path": "libanvl.tool/libanvl.tool.csproj"
+    },
+    {
+      "path": "libanvl.tool.test/libanvl.tool.test.csproj"
+    }
+  ],
+  "symbols": {
+    "product": {
+      "type": "parameter",
+      "description": "The product the package contributes to",
+      "defaultValue": "libanvl.dotnet",
+      "replaces": "libanvl.product"
+    },
+    "repositoryUrl": {
+      "type": "parameter",
+      "description": "The url of the source repository",
+      "defaultValue": "https://github.com/libanvl/dotnet-new",
+      "replaces": "https://github.com/libanvl/tool"
+    },
+    "description": {
+      "type": "parameter",
+      "description": "The description for the nuget package",
+      "defaultValue": "Tool Description from dotnet new",
+      "replaces": "Tool Description"
+    },
+    "skipRestore": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Skip dotnet restore after creation",
+      "defaultValue": "false"
+    }
+  },
+  "postActions": [
+    {
+      "condition": "(!skipRestore)",
+      "description": "Restore NuGet packages required by this project.",
+      "manualInstructions": [{ "text": "Run 'dotnet restore'" }],
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    }
+  ]
+}
