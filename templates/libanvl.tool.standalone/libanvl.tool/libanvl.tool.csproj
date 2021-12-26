@@ -14,12 +14,14 @@
       <PropertyGroup>
         <GenerateDocumentationFile>false</GenerateDocumentationFile>
         <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
+        <Optimize>false</Optimize>
       </PropertyGroup>
     </When>
     <When Condition=" '$(Configuration)' == 'Release' ">
       <PropertyGroup>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        <Optimize>true</Optimize>
       </PropertyGroup>
     </When>
   </Choose>
